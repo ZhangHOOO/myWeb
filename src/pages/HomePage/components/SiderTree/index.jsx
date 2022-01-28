@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 
 import { Tree, Input } from "antd";
-import "./index.css";
+import { observe, inject } from "mobx-react";
+import { compose } from "recompose";
+// import Store from "./Store";
 
 const { Search } = Input;
 
@@ -79,6 +81,10 @@ const getParentKey = (key, tree) => {
 };
 
 class SiderTree extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   state = {
     expandedKeys: ["0-0"],
     searchValue: "",
@@ -110,6 +116,8 @@ class SiderTree extends Component {
   };
 
   render() {
+    console.log("this.props.rootStore", this.props.rootStore);
+
     const { searchValue, expandedKeys, autoExpandParent } = this.state;
     const loop = (data) =>
       data.map((item) => {
@@ -165,4 +173,4 @@ class SiderTree extends Component {
   }
 }
 
-export default SiderTree;
+export default compose(observe, inject("RootStore"))(SiderTree);
