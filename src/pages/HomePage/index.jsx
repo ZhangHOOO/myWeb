@@ -4,6 +4,7 @@ import { Layout } from "antd";
 import IframeContent from "./components/IframeContent";
 import SiderTree from "./components/SiderTree";
 
+import "./index.css";
 const { Content, Sider } = Layout;
 class HomePage extends Component {
   state = {
@@ -20,7 +21,7 @@ class HomePage extends Component {
 
     return (
       <Layout style={{ minHeight: "100vh", padding: "10px 20px" }}>
-        <Sider>
+        <Sider className="site-layout-background">
           <SiderTree></SiderTree>
         </Sider>
         <Content style={{ margin: "0 16px" }}>

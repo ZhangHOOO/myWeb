@@ -16,12 +16,12 @@ const gData = [
       {
         title: "vue",
         key: "0-0-0",
-        url: "www.baidu.com",
+        url: "https://cn.vuejs.org/v2/guide/index.html",
       },
       {
         title: "react",
         key: "0-0-1",
-        url: "www.baidu.com",
+        url: "https://zh-hans.reactjs.org/",
       },
     ],
   },
@@ -144,8 +144,7 @@ class SiderTree extends Component {
 
     const onSelect = (selectedKeys, info) => {
       console.log("info", info.node.props.url);
-      if (info.node.props.url) {
-      }
+      info.node.props.url && localStorage.setItem("url", info.node.props.url);
     };
     return (
       <div>
