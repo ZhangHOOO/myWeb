@@ -1,0 +1,35 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.tabSize": 2,
+  "eslint.validate": ["javascript", "javascriptreact"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  },
+  "javascript.format.enable": false,
+  "javascript.suggest.enabled": true,
+  "javascript.suggest.paths": true,
+  "javascript.suggestionActions.enabled": true,
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false,
+  "editor.renderControlCharacters": true,
+  "path-intellisense.absolutePathToWorkspace": true,
+  "path-intellisense.mappings": {
+    "/": "${workspaceRoot}",
+    "src": "${workspaceRoot}/src",
+    "components": "${workspaceRoot}/src/components",
+    "containers": "${workspaceRoot}/src/containers",
+    "constants": "${workspaceRoot}/src/constants",
+    "locales": "${workspaceRoot}/src/locales",
+    "pages": "${workspaceRoot}/src/pages",
+    "routes": "${workspaceRoot}/src/routes",
+    "scss": "${workspaceRoot}/src/scss",
+    "stores": "${workspaceRoot}/src/stores",
+    "utils": "${workspaceRoot}/src/utils",
+    "static": "${workspaceRoot}/src/static"
+  },
+  "editor.tabCompletion": "on"
+}
