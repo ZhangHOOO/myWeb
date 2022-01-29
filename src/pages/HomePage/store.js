@@ -1,10 +1,10 @@
 import { observable, action } from "mobx";
 
 class Store {
-  @observable url = false;
+  @observable url = "https://cn.vuejs.org/v2/guide/index.html";
 
   @action
-  setPageLoading(value) {
+  setUrl(value) {
     this.url = value;
   }
 }

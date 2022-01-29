@@ -7,3 +7,8 @@
 
 - 前提：项目配置ACTION_SECRET
 - commit到master分支 自动部署
+
+# 新功能
+- 整理目录
+- 模糊搜索
+- iframe页面缓存

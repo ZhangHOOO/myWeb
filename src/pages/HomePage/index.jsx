@@ -24,7 +24,7 @@ class HomePage extends Component {
         <Sider className="site-layout-background">
           <SiderTree></SiderTree>
         </Sider>
-        <Content style={{ margin: "0 16px" }}>
+        <Content style={{ margin: "0 0 0 16px" }}>
           <IframeContent></IframeContent>
         </Content>
       </Layout>

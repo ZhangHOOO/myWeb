@@ -1,33 +1,15 @@
 import React, { Component } from "react";
 
 import { Tree, Input } from "antd";
-import { observe, inject } from "mobx-react";
-import { compose } from "recompose";
-// import Store from "./Store";
+import { observer, inject } from "mobx-react";
+import "./index.css";
+import gData from "./data";
 
 const { Search } = Input;
 
 const x = 3;
 const y = 2;
 const z = 1;
-const gData = [
-  {
-    title: "前端框架",
-    key: "0-0",
-    children: [
-      {
-        title: "vue",
-        key: "0-0-0",
-        url: "https://cn.vuejs.org/v2/guide/index.html",
-      },
-      {
-        title: "react",
-        key: "0-0-1",
-        url: "https://zh-hans.reactjs.org/",
-      },
-    ],
-  },
-];
 
 const generateData = (_level, _preKey, _tns) => {
   const preKey = _preKey || "0";
@@ -79,17 +61,22 @@ const getParentKey = (key, tree) => {
   }
   return parentKey;
 };
-
+@inject("homePage")
+@observer
 class SiderTree extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      expandedKeys: [gData[0].key],
+      searchValue: "",
+      autoExpandParent: true,
+    };
+    // this.store = props.homePage;
   }
-
-  state = {
-    expandedKeys: ["0-0"],
-    searchValue: "",
-    autoExpandParent: true,
-  };
+  get store() {
+    const { homePage } = this.props;
+    return homePage;
+  }
 
   onExpand = (expandedKeys) => {
     this.setState({
@@ -116,8 +103,6 @@ class SiderTree extends Component {
   };
 
   render() {
-    console.log("this.props.rootStore", this.props.rootStore);
-
     const { searchValue, expandedKeys, autoExpandParent } = this.state;
     const loop = (data) =>
       data.map((item) => {
@@ -151,8 +136,12 @@ class SiderTree extends Component {
       });
 
     const onSelect = (selectedKeys, info) => {
-      console.log("info", info.node.props.url);
       info.node.props.url && localStorage.setItem("url", info.node.props.url);
+      if (info.node.props.url) {
+        console.log("info", info.node.props.url);
+
+        this.store.setUrl(info.node.props.url);
+      }
     };
     return (
       <div>
@@ -163,7 +152,8 @@ class SiderTree extends Component {
         />
         <Tree
           onExpand={this.onExpand}
-          expandedKeys={expandedKeys}
+          defaultExpandAll={true}
+          // expandedKeys={expandedKeys}
           autoExpandParent={autoExpandParent}
           treeData={loop(gData)}
           onSelect={onSelect}
@@ -173,4 +163,4 @@ class SiderTree extends Component {
   }
 }
 
-export default compose(observe, inject("RootStore"))(SiderTree);
+export default SiderTree;
